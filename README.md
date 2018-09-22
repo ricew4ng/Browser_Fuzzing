@@ -2,9 +2,10 @@
 
 浏览器Fuzzing。隐私项目，所以这里只push一些func代码 —— Sera Wang
 
+<h1>样本下载</h1>
 
-1. 样本下载
 ---
+
 仓库下载脚本（单线程） 
 
 1. 先使用 pip install -r requirements.txt 安装所需要的库
