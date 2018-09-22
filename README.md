@@ -2,8 +2,8 @@
 
 浏览器Fuzzing。隐私项目，所以这里只push一些func代码 —— Sera Wang
 
-<h1>样本下载</h1>
 
+<h3>样本下载</h3>
 ---
 
 仓库下载脚本（单线程） 
@@ -35,7 +35,7 @@
 	![](http://p6jpvwsnk.bkt.clouddn.com/18-9-6/73710772.jpg)
 
 
-2. 样本提取
+<h3>样本提取</h3>
 ---
 distributor.py 脚本用来提取下载好的仓库中的HTML，CSS，JS文件。
 
@@ -53,7 +53,7 @@ distributor.py 脚本用来提取下载好的仓库中的HTML，CSS，JS文件�
 _split 设置是否要为各个仓库单独创建文件夹
 
 
-3. html文件转向量矩阵
+<h3>html文件转向量矩阵</h3>
 ---
 
 html2vectorMatrix.py 是函数文件
