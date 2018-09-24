@@ -3,7 +3,7 @@
 浏览器Fuzzing。隐私项目，所以这里只push一些func代码 —— Sera Wang
 
 <h3>html文件转向量矩阵</h3>
----
+
 
 html2vectorMatrix.py 是函数文件
 
@@ -14,7 +14,7 @@ index.html是测试文件
 all_tag是html标签字典
 
 <h4>使用示例</h4>
----
+<br/>
 
 <code>
 #coding:utf8
