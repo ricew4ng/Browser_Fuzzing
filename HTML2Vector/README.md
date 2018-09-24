@@ -16,20 +16,38 @@ all_tag是html标签字典
 <h4>使用示例</h4>
 ---
 
+<code>
+#coding:utf8
+
+from html2vectorMatrix import *
+</code>
+
 1. 打印向量矩阵，矩阵维数=>提取出的"token"数 * 字典大小 (即all_tag大小，222)
 
-![](http://p6jpvwsnk.bkt.clouddn.com/18-9-22/58537887.jpg)
+<code>
+  tagList = getTagList() # 读取本地字典
+  
+	html_str = readFile('./index.html') # 读取本地index.html文件
+	
+	vector_matrix = generateMatrix(html_str,tagList) # 获取向量矩阵
+</code>
 
 对于不在字典中的token，会将其字符串输出，可以以此来分类或者扩充字典
 
 2. 将向量矩阵还原为原来的 html字符串
 
-![](http://p6jpvwsnk.bkt.clouddn.com/18-9-22/45396356.jpg)
+<code>
+html_string = matrix2string(vector_matrix,tagList) 
+	
+print(html_string)
+</code>
 
 3. 分析向量矩阵，主要是看不在字典中的token是哪些，便于日后分类，还可以设置精度查看其对应的上下文
 
-![](http://p6jpvwsnk.bkt.clouddn.com/18-9-22/30619607.jpg)
-
+<code>
+  analyzeMatrix(vector_matrix,tagList)
+</code>
+<br/>
 ![](http://p6jpvwsnk.bkt.clouddn.com/18-9-22/37298078.jpg)
 
 
