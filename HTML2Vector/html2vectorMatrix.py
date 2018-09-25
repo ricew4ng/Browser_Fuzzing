@@ -10,6 +10,7 @@
 import random
 import sys
 import re
+import os
 
 # 从本地文件读取标签并返回list(这两个键值对相反)
 def getTagList():
@@ -85,11 +86,9 @@ def string2matrix(str,tagList):
 def deepSplit(str):
 	result = []
 	
-	pat1 = "^(/)(.*)" # 匹配类似 /body   /p
-	
-	pat2 = '''(.*?)(=)(["'])(.*?)(["'])'''
-	
-	# -----------------------------
+	pat1 = "^(/)(.*)" # 匹配类似 => /body
+	pat2 = '''(.*?)(=)(["'])(.*?)(["']{0,1})''' # 匹配类似 => class="test 
+	pat3 = "(.*?)(\")" # 匹配类似 => test"
 	
 	data_pat = "data(-.*)" # 匹配 data-*
 	
@@ -98,7 +97,9 @@ def deepSplit(str):
 	if len(r) == 0:
 		r = re.compile(pat2).findall(str)
 		if len(r) == 0:
-			result.append(str)
+			r = re.compile(pat3).findall(str)
+			if len(r) == 0:
+				result.append(str)
 			
 	for tuple in r:
 		for i in tuple:
@@ -122,15 +123,50 @@ def matrix2string(matrix,tagList):
 	return string
 	
 # 分析当前向量矩阵，查看未转换为向量的词有哪些
-def analyzeMatrix(matrix,tagList):
+def analyzeMatrix(matrix,tagList,accuracy=4,doPrint=True):
+	token_list = []
 	for i in range(len(matrix)):
 		if type(matrix[i]).__name__ == 'str': # 表示未转成向量
-			string = ''
-			for j in range(3):
-				try: string+=tagList[matrix[i-3+j].index(1)]+' '
-				except: pass
-			string+=matrix[i]
-			for j in range(3):
-				try: string+=tagList[matrix[i+j+1].index(1)]+' '
-				except: pass
-			print('[*] 陌生TAG=>'+matrix[i]+'\t上下文=>'+string)
+			token_list.append(matrix[i])
+			if doPrint: # 要打印分析
+				string = ''
+				for j in range(accuracy):
+					try: string+=tagList[matrix[i-3+j].index(1)]+' '
+					except: pass
+				string+=matrix[i]
+				for j in range(accuracy):
+					try: string+=tagList[matrix[i+j+1].index(1)]+' '
+					except: pass
+				print('[*] 陌生TAG=>'+matrix[i]+'\t上下文=>'+string)
+	return token_list
+	
+# 输入一个html文件夹，检索其中的10个html文件并返回其中的“陌生”token
+def checkHTML(target_path,tagList,checkNum=10,doPrint=False):
+	count = 0
+	lost_token = []
+	for i in os.listdir(target_path):
+		html_path = target_path+'/'+i
+		if os.path.isfile(html_path):
+			html_str = readFile(html_path) # 读取文件获取字符串
+			vector_matrix = generateMatrix(html_str,tagList) # 获取向量矩阵
+			temp_token_list = analyzeMatrix(vector_matrix,tagList,doPrint=False)
+			for token in temp_token_list:
+				if token != '':
+					lost_token.append(token)
+					if doPrint:
+						print(token)
+			if checkNum != False:
+				count+=1
+				if count == checkNum:
+					break
+	return lost_token
+	
+# 输入一个token_list, 分析输出每个token的重复次数
+def analyzeTokens(token_list):
+	tokens = {}
+	for token in token_list:
+		if token in tokens:
+			tokens[token]+=1
+		else:
+			tokens[token] = 1
+	return tokens
