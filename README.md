@@ -1,4 +1,4 @@
-# BrowserFuzzing
+# Browser Fuzzing
 
 浏览器Fuzzing，privavte project。 so这里只push一些功能性代码。
 
