@@ -1,6 +1,6 @@
 # BrowserFuzzing
 
-浏览器Fuzzing，这里只push一些func代码。 —— Sera Wang
+浏览器Fuzzing，这里只push一些func代码。
 
 ---------------------------------------------
 
