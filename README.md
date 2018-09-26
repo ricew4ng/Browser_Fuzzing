@@ -22,13 +22,13 @@ use => python main.py -h
 
 	-k set default search-keyword ， default=> 'a'		设置搜索关键词
 
-	-l set repositories-language ，default=> 'HTML'	
+	-l set repositories-language ，default=> 'HTML' 	设置仓库语言
 
-	-t set download timeout ，default=> 10 (seconds)
+	-t set download timeout ，default=> 10 (seconds) 	设置下载超时
 
-	-n set the num of the repositories to download ，default=>30  (repositories will be downloaded)
+	-n set the num of the repositories to download ，default=>30  (repositories will be downloaded) 	设置要下载的样本仓库数量
 
-	-s set the size of the repositories in order to prevent downloading timeout ，default => 40000 (KB，about 40MB)
+	-s set the size of the repositories in order to prevent downloading timeout ，default => 40000 (KB，about 40MB) 	设置要下载的仓库限制大小
 
 4. examples:
 
