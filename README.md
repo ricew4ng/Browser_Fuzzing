@@ -1,36 +1,36 @@
 # Browser Fuzzing
 
-浏览器Fuzzing，private project。 so这里只push一些功能性代码。
+浏览器Fuzzing，private project。 so only functional codes will be pushed.
 
 ---------------------------------------------
 
 <h3>样本下载</h3>
 
-仓库下载脚本（单线程） 
+Sample_downloader（single thread） ————download repositories from github as web-samples   用来下载web样本
 
-1. 先使用 pip install -r requirements.txt 安装所需要的库
+1. use pip install -r requirements.txt install the requirements.
 
-2. 具体使用:
+2. see help 查看帮助
 
-	输入 python main.py -h 查看帮助
+use => python main.py -h
 
-3. 各参数都有默认值，可以根据需要调整
+3. each argument has a default value. 参数都具有默认值
 
 	eg: 
 
-	>python main.py -k 'test' -l 'javascript' -t 10 -n 40
+	>python main.py -k 'test' -l 'javascript' -t 10 -n 40	示例
 
-	-k 设置搜索关键词 默认 'a'
+	-k set default search-keyword ， default=> 'a'		设置搜索关键词
 
-	-l 设置仓库语言，默认 'HTML'
+	-l set repositories-language ，default=> 'HTML'	
 
-	-t 设置下载超时时间，默认10秒
+	-t set download timeout ，default=> 10 (seconds)
 
-	-n 设置要下载的仓库数量，默认30个
+	-n set the num of the repositories to download ，default=>30  (repositories will be downloaded)
 
-	-s 设置 仓库下载大小限制，默认40000KB，即40MB左右
+	-s set the size of the repositories in order to prevent downloading timeout ，default => 40000 (KB，about 40MB)
 
-4. 例子:
+4. examples:
 
 	![](http://p6jpvwsnk.bkt.clouddn.com/18-9-6/73710772.jpg)
 
