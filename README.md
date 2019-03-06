@@ -12,7 +12,7 @@ Sample_downloader（single thread） ————download repositories from gith
 
 2. see help 查看帮助
 
-use => python main.py -h
+	use => python main.py -h
 
 3. each argument has a default value. 参数都具有默认值
 
